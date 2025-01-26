@@ -1,13 +1,31 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.ecommerce;
 
-/**
- *
- * @author Joao Paulo
- */
 public class Produto {
+
+    private final int id;
+    private final String nome;
+    private double preco;
+
+    public Produto(int id, String nome, double p){
+        this.id = id;
+        this.nome = nome;
+        this.preco = p;
+    }
     
+    public int getId() {
+        return id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public void setPreco(double preco) {
+        this.preco = preco;
+    }
 }
+
