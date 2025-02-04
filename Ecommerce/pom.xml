@@ -12,7 +12,27 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> 
         <maven.compiler.release>21</maven.compiler.release> 
         <exec.mainClass>com.mycompany.ecommerce.Main</exec.mainClass> 
-    </properties> 
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>5.10.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>5.10.2</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.10.2</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
     <build> 
         <pluginManagement> 
             <plugins> 
