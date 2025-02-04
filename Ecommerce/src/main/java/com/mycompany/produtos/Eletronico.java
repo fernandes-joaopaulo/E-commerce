@@ -6,8 +6,8 @@ public class Eletronico extends Produto {
 
     private int prazoGarantia;
 
-    public Eletronico(int id, String nome, double p, int prazo) {
-        super(id, nome, p);
+    public Eletronico(String nome, double p, int prazo) {
+        super(nome, p);
         this.prazoGarantia = prazo;
     }
 

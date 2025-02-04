@@ -3,13 +3,15 @@ package com.mycompany.ecommerce;
 public class Produto {
 
     private final int id;
+    private static int idAtual = 0;
     private final String nome;
     private double preco;
 
-    public Produto(int id, String nome, double p){
-        this.id = id;
+    public Produto(String nome, double p){
+        this.id = idAtual;
         this.nome = nome;
         this.preco = p;
+        idAtual++;
     }
     
     public int getId() {

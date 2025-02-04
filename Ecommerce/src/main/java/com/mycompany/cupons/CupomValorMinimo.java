@@ -6,7 +6,7 @@ public class CupomValorMinimo extends Cupom {
 
     private final double valorMinimo;
 
-    public CupomValorMinimo(int cod, int desc, double val) {
+    public CupomValorMinimo(String cod, int desc, double val) {
 
         super(cod, desc);
         this.valorMinimo = val;

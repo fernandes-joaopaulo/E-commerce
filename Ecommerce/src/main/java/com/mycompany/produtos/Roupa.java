@@ -7,8 +7,8 @@ public class Roupa extends Produto {
     private String tamanho;
     private String cor;
 
-    public Roupa(int id, String nome, double p, String tam, String cor) {
-        super(id, nome, p);
+    public Roupa(String nome, double p, String tam, String cor) {
+        super(nome, p);
         this.tamanho = tam;
         this.cor = cor;
     }

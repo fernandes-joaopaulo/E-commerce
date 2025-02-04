@@ -2,24 +2,27 @@ package com.mycompany.ecommerce;
 
 import com.mycompany.ecommerce.Cupom;
 import com.mycompany.ecommerce.Produto;
+import java.util.*;
 
 public class Venda {
 
     private final int id;
-    private final Produto[] produtos;
+    private static int idAtual;
+    private List<Produto> produtos = new ArrayList<>();
     private final Cupom cupom;
 
-    public Venda(int id, Produto[] prod, Cupom c) {
-        this.id = id;
+    public Venda(List<Produto> prod, Cupom c) {
+        this.id = idAtual;
         this.produtos = prod;
         this.cupom = c;
+        idAtual++;
     }
 
     public Cupom getCupom() {
         return cupom;
     }
 
-    public Produto[] getProdutos() {
+    public List<Produto> getProdutos() {
         return produtos;
     }
     
@@ -28,7 +31,8 @@ public class Venda {
         for(Produto p : produtos){
             total += p.getPreco();
         }
-        return total *= (cupom.getDesconto() / 100);
+        double desconto = total * (cupom.getDesconto() / 100.0);
+        return total - desconto;
     }
 
     public void exibir() {

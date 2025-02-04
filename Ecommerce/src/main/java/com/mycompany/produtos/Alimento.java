@@ -6,8 +6,8 @@ public class Alimento extends Produto {
 
     private final String dataValidade;
 
-    public Alimento(int id, String nome, double p, String data) {
-        super(id, nome, p);
+    public Alimento(String nome, double p, String data) {
+        super(nome, p);
         this.dataValidade = data;
     }
 
