@@ -3,6 +3,7 @@ package com.mycompany.ecommerce;
 import java.util.*;
 import com.mycompany.cupons.CupomQuantidadeLimitada;
 import com.mycompany.cupons.CupomValorMinimo;
+import com.mycompany.exceptions.CupomInvalidoException;
 
 public class GestorVendas implements Relatorio {
 
@@ -14,10 +15,14 @@ public class GestorVendas implements Relatorio {
         List<Venda> vendas = e.getVendas();
         int totalVendas = vendas.size();
         double valorArrecadado = 0;
+        int i = 1;
         for (Venda venda : vendas) {
-            valorArrecadado += venda.calculaValorFinal();
+            System.out.println("\nVENDA "+ i);
+            venda.exibir();
+            valorArrecadado += venda.calculaValorComDesconto();
+            i++;
         }
-        System.out.println("Total de vendas realizadas: " + totalVendas);
+        System.out.println("\nTotal de vendas realizadas: " + totalVendas);
         System.out.println("Valor arrecadado: " + valorArrecadado + " R$");
         System.out.println("\n");
     }

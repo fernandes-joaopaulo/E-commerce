@@ -1,5 +1,7 @@
 package com.mycompany.ecommerce;
 
+import com.mycompany.cupons.CupomValorMinimo;
+import com.mycompany.cupons.CupomQuantidadeLimitada;
 import java.util.*;
 import com.mycompany.exceptions.CupomInvalidoException;
 import com.mycompany.exceptions.ProdutoInvalidoException;
@@ -47,11 +49,22 @@ public class Ecommerce {
             throw new ProdutoInvalidoException("Produto(s) nao existente(s) na loja!");
         }
         if (!cupomValido(cupom)) {
-            throw new CupomInvalidoException("Código do cupom inválido!");
+            throw new CupomInvalidoException("Cupom invalido!");
         }
         if (!cupom.getAtivo()) {
             throw new CupomInvalidoException("Cupom inativo!");
         }
+        if (cupom instanceof CupomQuantidadeLimitada){
+            CupomQuantidadeLimitada cupomQtd = (CupomQuantidadeLimitada) cupom;
+            if(cupomQtd.getUtilizacoesAtuais() == cupomQtd.getMaximoUtilizacoes())
+                throw new CupomInvalidoException("Cupom " + cupomQtd.getCodigo() + " excedeu o maximo de utilizacoes");
+            else
+                cupomQtd.addUtilizacoesAtuais();
+        }
+        if (cupom instanceof CupomValorMinimo)
+            if(((CupomValorMinimo) cupom).getValorMinimo() > v.calculaValorFinal())
+                throw new CupomInvalidoException("Valor total insuficiente para uso do cupom " + cupom.getCodigo());
+        
         vendas.add(v);
     }
 

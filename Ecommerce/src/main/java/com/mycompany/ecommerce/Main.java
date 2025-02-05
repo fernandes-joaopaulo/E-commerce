@@ -6,7 +6,7 @@ import com.mycompany.produtos.Roupa;
 import com.mycompany.exceptions.CupomInvalidoException;
 import com.mycompany.exceptions.ProdutoInvalidoException;
 import com.mycompany.cupons.CupomQuantidadeLimitada;
-import com.mycompany.cupons.CupomQuantidadeLimitada;
+import com.mycompany.cupons.CupomValorMinimo;
 import java.util.*;
 
 public class Main {
@@ -40,15 +40,17 @@ public class Main {
         loja.cadastrarProduto(tablet);
 
         // Criando cupons de desconto
-        CupomQuantidadeLimitada cupom1 = new CupomQuantidadeLimitada("VALE10", 10, 3);
-        CupomQuantidadeLimitada cupom2 = new CupomQuantidadeLimitada("VALE20", 20, 3);
-        CupomQuantidadeLimitada cupom3 = new CupomQuantidadeLimitada("VALE50", 50, 3);
+        CupomQuantidadeLimitada cupom1 = new CupomQuantidadeLimitada("VALE10", 10, 2);
+        CupomQuantidadeLimitada cupom2 = new CupomQuantidadeLimitada("VALE20", 20, 2);
+        CupomQuantidadeLimitada cupom3 = new CupomQuantidadeLimitada("VALE50", 50, 2);
+        CupomValorMinimo cupom4 = new CupomValorMinimo("VALE40", 40, 3000.00);
 
         //Adicionando cupons a loja
         try{
             loja.gerarCupom(cupom1);
             loja.gerarCupom(cupom2);
             loja.gerarCupom(cupom3);
+            loja.gerarCupom(cupom4);
         }catch(CupomInvalidoException e){
             System.out.println("Erro: " + e.getMessage());
         }
@@ -72,7 +74,7 @@ public class Main {
         // Criando vendas
         Venda venda1 = new Venda(produtosVenda1, cupom1);
         Venda venda2 = new Venda(produtosVenda2, cupom1);
-        Venda venda3 = new Venda(produtosVenda3, cupom1);
+        Venda venda3 = new Venda(produtosVenda3, cupom2);
 
         // Adicionando vendas na loja
         try {

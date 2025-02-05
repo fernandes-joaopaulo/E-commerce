@@ -5,7 +5,7 @@ import com.mycompany.ecommerce.Cupom;
 public class CupomQuantidadeLimitada extends Cupom {
 
     private final int maximoUtilizacoes;
-    private static int utilizacoesAtuais;
+    private int utilizacoesAtuais;
 
     public CupomQuantidadeLimitada(String cod, int desc, int max) {
 

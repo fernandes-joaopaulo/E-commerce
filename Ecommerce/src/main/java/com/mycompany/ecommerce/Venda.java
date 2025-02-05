@@ -1,5 +1,8 @@
 package com.mycompany.ecommerce;
 
+import com.mycompany.cupons.CupomQuantidadeLimitada;
+import com.mycompany.cupons.CupomValorMinimo;
+import com.mycompany.exceptions.CupomInvalidoException;
 import com.mycompany.ecommerce.Cupom;
 import com.mycompany.ecommerce.Produto;
 import java.util.*;
@@ -31,8 +34,17 @@ public class Venda {
         for(Produto p : produtos){
             total += p.getPreco();
         }
-        double desconto = total * (cupom.getDesconto() / 100.0);
-        return total - desconto;
+        return total;
+    }
+    
+    public double calculaValorComDesconto(){
+        if(this.cupom != null){
+            double desconto = (this.cupom.getDesconto() / 100.0) * calculaValorFinal();
+            double total = calculaValorFinal() - desconto;
+            return total;
+        }else{
+            return calculaValorFinal();
+        }
     }
 
     public void exibir() {
@@ -41,7 +53,7 @@ public class Venda {
             System.out.println(p.getNome());
         }
         if(this.cupom != null)
-            System.out.print("Cupom aplicado: "+this.cupom.getDesconto()+"%");
-        System.out.println("Total: "+calculaValorFinal()+"R$");
+            System.out.println("Cupom aplicado: "+this.cupom.getDesconto()+"%");
+        System.out.println("Total: "+calculaValorComDesconto()+"R$");
     }
 }
