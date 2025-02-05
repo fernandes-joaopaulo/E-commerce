@@ -18,6 +18,10 @@ public class Ecommerce {
         cupons = new ArrayList<>();
     }
 
+    public List<Produto> getProdutos() {
+        return produtos;
+    }
+    
     public List<Venda> getVendas() {
         return vendas;
     }
@@ -32,12 +36,12 @@ public class Ecommerce {
 
     public void removerProduto(Produto p) throws ProdutoInvalidoException {
         for (Produto prod : produtos) {
-            if (prod.equals(p)) {
+            if (prod.equals(p)){
                 produtos.remove(p);
-            } else {
-                throw new ProdutoInvalidoException("Produto nao existe na loja");
+                return;
             }
         }
+        throw new ProdutoInvalidoException("Produto nao existe na loja");
     }
 
     public void adicionarVenda(Venda v) throws CupomInvalidoException, ProdutoInvalidoException {

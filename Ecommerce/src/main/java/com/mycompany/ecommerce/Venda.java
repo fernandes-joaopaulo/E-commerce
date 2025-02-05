@@ -50,10 +50,11 @@ public class Venda {
     public void exibir() {
         System.out.println("Produtos: ");
         for(Produto p : produtos){
-            System.out.println(p.getNome());
+            System.out.println(p.getNome() + " " + p.getPreco() + "R$");
         }
+        System.out.println("Total: "+calculaValorFinal()+"R$");
         if(this.cupom != null)
             System.out.println("Cupom aplicado: "+this.cupom.getDesconto()+"%");
-        System.out.println("Total: "+calculaValorComDesconto()+"R$");
+        System.out.println("Valor final: "+calculaValorComDesconto()+"R$");
     }
 }
